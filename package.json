@@ -1,6 +1,6 @@
 {
   "name": "admincraft-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Quickly create projects for admincraft",
   "bin": {
     "admincraft": "bin/main.js"
