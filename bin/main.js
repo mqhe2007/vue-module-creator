@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const path = require('path')
 const program = require('commander')
 const resolveCommand = command => path.resolve(__dirname, '../command', command)
