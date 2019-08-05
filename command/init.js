@@ -6,7 +6,7 @@ const download = require('download-git-repo')
 const chalk = require('chalk')
 const nameOption = program.parse(process.argv).args[0]
 const defaultName = 'admincraft-project'
-const templateRepository = 'mqhe2007/admincraft-showcase'
+const templateRepository = 'mqhe2007/admincraft-project'
 const loading = ora('模板下载中，请稍后……')
 const questions = [
   {
