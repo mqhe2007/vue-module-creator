@@ -4,11 +4,11 @@ const program = require('commander')
 const resolveCommand = command => path.resolve(__dirname, '../command', command)
 program.version(require('../package.json').version)
 program
-  .command('init')
+  .command('create')
   .description('创建一个新项目')
   .alias('i')
   .action(() => {
-    require(resolveCommand('init'))
+    require(resolveCommand('create'))
   })
 if (!process.argv.slice(2).length) {
   program.help()

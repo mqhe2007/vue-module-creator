@@ -1,14 +1,14 @@
 {
-  "name": "admincraft-cli",
-  "version": "0.1.4",
+  "name": "vue-module-cli",
+  "version": "0.1.0",
   "description": "Quickly create projects for admincraft",
   "bin": {
-    "admincraft": "bin/main.js"
+    "vmc": "bin/main.js"
   },
   "author": "qingjin <122274389@qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mqhe2007/admincraft-cli"
+    "url": "https://github.com/mqhe2007/vue-module-cli"
   },
   "license": "MIT",
   "private": false,
