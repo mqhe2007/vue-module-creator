@@ -1,7 +1,7 @@
 {
   "name": "vue-module-cli",
   "version": "0.1.0",
-  "description": "Quickly create projects for admincraft",
+  "description": "A command line tool for the create micro front end module project",
   "bin": {
     "vmc": "bin/main.js"
   },
