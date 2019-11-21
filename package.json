@@ -1,5 +1,5 @@
 {
-  "name": "vue-module-cli",
+  "name": "vue-module-creator",
   "version": "0.1.0",
   "description": "A command line tool for the create micro front end module project",
   "bin": {
@@ -8,7 +8,7 @@
   "author": "qingjin <122274389@qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mqhe2007/vue-module-cli"
+    "url": "https://github.com/mqhe2007/vue-module-creator"
   },
   "license": "MIT",
   "private": false,
