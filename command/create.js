@@ -9,8 +9,8 @@ const defaultName = 'vue-module'
 const repositories = {
   vue2: 'mqhe2007/vue-module',
   vue3: {
-    frame: 'mqhe2007/vue-module-frame',
-    module: 'mqhe2007/vue-module-module',
+    frame: 'mqhe2007/vue-module-frame#main',
+    module: 'mqhe2007/vue-module-module#main',
   },
 }
 const loading = ora('模板下载中，请稍后……')
