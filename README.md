@@ -13,7 +13,7 @@ yarn add vue-module-creator
 ### 2. 初始化工程
 
 ```
-vmc create
+vml create
 ```
 
 ### 3. 跟随引导操作

@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "A command line tool for the create micro front end module project",
   "bin": {
-    "vmc": "bin/main.js"
+    "vml": "bin/main.js"
   },
   "author": "qingjin <122274389@qq.com>",
   "repository": {
@@ -18,5 +18,9 @@
     "download-git-repo": "^1.1.0",
     "inquirer": "^6.3.1",
     "ora": "^3.4.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
