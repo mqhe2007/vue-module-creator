@@ -7,7 +7,7 @@
 ### 1. 安装
 
 ```
-yarn add vue-module-creator
+npm i -g vue-module-creator
 ```
 
 ### 2. 初始化工程
