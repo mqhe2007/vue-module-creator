@@ -1,6 +1,6 @@
 # vue-module-creator
 
-快速生成适用于[vue-module-loader](https://github.com/mqhe2007/vue-module-loader)的微前端模块命令行工具。
+快速生成适用于[vue-module-loader](https://mqhe2007.github.io/vue-module-loader-doc/)的微前端模块命令行工具。
 
 ## 教程
 
