@@ -10,10 +10,10 @@
 npm i -g vue-module-creator
 ```
 
-### 2. 初始化工程
+### 2. 查看帮助
 
 ```
-vml create
+vml -h
 ```
 
 ### 3. 跟随引导操作

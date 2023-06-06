@@ -1,9 +1,9 @@
-const fs = require('fs')
-const program = require('commander')
-const inquirer = require('inquirer')
-const ora = require('ora')
-const download = require('download-git-repo')
-const chalk = require('chalk')
+import fs from 'fs'
+import {program} from 'commander'
+import inquirer from 'inquirer'
+import ora from 'ora'
+import download from 'download-git-repo'
+import chalk from 'chalk'
 const nameOption = program.parse(process.argv).args[0]
 const defaultName = 'vue-module'
 const repositories = {
@@ -66,49 +66,51 @@ const questions = [
     transformer: (value) => `：${value}`,
   },
 ]
-module.exports = inquirer
-  .prompt(questions)
-  .then(({ version, project, name, description, author }) => {
-    loading.start()
-    let templateRepository = repositories[version]
-    if (version === 'vue3') {
-      templateRepository = repositories[version][project.split('-')[0]]
-    }
-    download(templateRepository, `./${name}`, (err) => {
-      if (err) {
-        loading.fail('模板下载失败！')
-        console.log(chalk.red(err))
-        process.exit()
-      } else {
-        fs.readFile(`./${name}/package.json`, 'utf8', (err, data) => {
-          if (err) {
-            console.log(chalk.red(err))
-            process.exit()
-          }
-          const packageJson = JSON.parse(data)
-          packageJson.name = name
-          packageJson.description = description
-          packageJson.author = author
-          packageString = JSON.stringify(packageJson, null, 2)
-          fs.writeFile(
-            `./${name}/package.json`,
-            packageString,
-            'utf8',
-            (err) => {
-              if (err) {
-                console.log(chalk.red(err))
-                process.exit()
-              }
-              loading.succeed('模板准备就绪！请进一步操作。')
-              console.log(`
+export const create = () => {
+  inquirer
+    .prompt(questions)
+    .then(({ version, project, name, description, author }) => {
+      loading.start()
+      let templateRepository = repositories[version]
+      if (version === 'vue3') {
+        templateRepository = repositories[version][project.split('-')[0]]
+      }
+      download(templateRepository, `./${name}`, (err) => {
+        if (err) {
+          loading.fail('模板下载失败！')
+          console.log(chalk.red(err))
+          process.exit()
+        } else {
+          fs.readFile(`./${name}/package.json`, 'utf8', (err, data) => {
+            if (err) {
+              console.log(chalk.red(err))
+              process.exit()
+            }
+            const packageJson = JSON.parse(data)
+            packageJson.name = name
+            packageJson.description = description
+            packageJson.author = author
+            packageString = JSON.stringify(packageJson, null, 2)
+            fs.writeFile(
+              `./${name}/package.json`,
+              packageString,
+              'utf8',
+              (err) => {
+                if (err) {
+                  console.log(chalk.red(err))
+                  process.exit()
+                }
+                loading.succeed('模板准备就绪！请进一步操作。')
+                console.log(`
             ${chalk.bgWhite.black('  进一步操作  ')}
             ${chalk.yellow(`cd ${name}`)}
             ${chalk.yellow('yarn 或 npm install')}
             ${chalk.yellow('yarn serve 或 npm run serve')}
           `)
-            }
-          )
-        })
-      }
+              }
+            )
+          })
+        }
+      })
     })
-  })
+}

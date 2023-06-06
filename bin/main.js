@@ -1,15 +1,14 @@
 #!/usr/bin/env node
-const path = require('path')
-const program = require('commander')
-const resolveCommand = (command) =>
-  path.resolve(__dirname, '../command', command)
-program.version(require('../package.json').version)
+import { program } from 'commander'
+import { create } from '../command/create.js'
+import { generate } from '../command/generate.js'
+program.name('vml').description('专注于Vue的微前端模块生成器').version('2.0.0')
+program.command('create').description('创建一个新项目').action(create)
 program
-  .command('create')
-  .description('创建一个新项目')
-  .action(() => {
-    require(resolveCommand('create'))
-  })
+  .command('g')
+  .description('g是generate的简写，代表生成命令，当前仅支持生成模块。')
+  .argument('<moduleName>', '模块名称')
+  .action(generate)
 if (!process.argv.slice(2).length) {
   program.help()
 }
