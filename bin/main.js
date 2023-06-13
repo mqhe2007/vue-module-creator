@@ -7,7 +7,7 @@ program.command('create').description('创建一个新项目').action(create)
 program
   .command('g')
   .description('g是generate的简写，代表生成命令，当前仅支持生成模块。')
-  .argument('<moduleName>', '模块名称')
+  .argument('<moduleName>', '模块名称，支持相对路径方式。')
   .action(generate)
 if (!process.argv.slice(2).length) {
   program.help()
