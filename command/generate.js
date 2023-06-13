@@ -4,11 +4,11 @@ import chalk from 'chalk'
 import axios from 'axios'
 import { TextWriter, ZipReader } from '@zip.js/zip.js'
 import { Blob } from 'buffer'
-import {resolve} from 'path'
-export const generate = async (moduleName) => {
+import { resolve } from 'path'
+export const generate = async (moduleName, options) => {
+  const { type } = options
   // 判断工作目录中是否存在当前目录
   const modulePath = resolve(process.cwd(), moduleName)
-  console.log(modulePath);
   if (fs.existsSync(modulePath)) {
     console.log(chalk.red('当前模块目录已存在，请修改模块名称后重试！'))
     return
@@ -26,7 +26,7 @@ export const generate = async (moduleName) => {
     const readableStream = new Blob([res.data]).stream()
     const zipReader = new ZipReader(readableStream)
     const entries = await zipReader.getEntries()
-    const pattern = /\/src(\/.+)/
+    const pattern = type === 'app' ? /\/monorapo-template(\/.+)/ : /\/src(\/.+)/
     entries.forEach(async (entry) => {
       if (pattern.test(entry.filename)) {
         const entryName = entry.filename.match(pattern)[1]
