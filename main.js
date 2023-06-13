@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import { program } from 'commander'
-import { create } from '../command/create.js'
-import { generate } from '../command/generate.js'
+import { create } from './command/create.js'
+import { generate } from './command/generate.js'
 import { readFileSync } from 'fs'
-import { resolve } from 'path'
-const pkg = JSON.parse(
-  readFileSync(resolve(process.cwd(), './package.json'), 'utf-8')
-)
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+const pkgMainPath = fileURLToPath(import.meta.url)
+const pkgPath = dirname(pkgMainPath)
+const pkg = JSON.parse(readFileSync(`${pkgPath}/package.json`, 'utf-8'))
 program
   .name('vml')
   .description('专注于Vue的微前端模块生成器')
