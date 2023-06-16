@@ -6,7 +6,7 @@ import { TextWriter, ZipReader } from '@zip.js/zip.js'
 import { Blob } from 'buffer'
 import { resolve } from 'path'
 export const generate = async (moduleName, options) => {
-  const { type } = options
+  const { type, source } = options
   // 判断工作目录中是否存在当前目录
   const modulePath = resolve(process.cwd(), moduleName)
   if (fs.existsSync(modulePath)) {
@@ -14,15 +14,15 @@ export const generate = async (moduleName, options) => {
     return
   }
   const spinner = ora().start()
+  const sourceUrl =
+    source ||
+    'https://github.com/mqhe2007/vue-module-module/archive/refs/heads/2.0.zip'
   try {
     // 下载模板
     spinner.text = '开始下载模块模板...'
-    const res = await axios.get(
-      'https://github.com/mqhe2007/vue-module-module/archive/refs/heads/2.0.zip',
-      {
-        responseType: 'arraybuffer',
-      }
-    )
+    const res = await axios.get(sourceUrl, {
+      responseType: 'arraybuffer',
+    })
     const readableStream = new Blob([res.data]).stream()
     const zipReader = new ZipReader(readableStream)
     const entries = await zipReader.getEntries()

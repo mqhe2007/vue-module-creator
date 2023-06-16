@@ -25,5 +25,6 @@ program
   .description('生成模板文件。')
   .argument('<moduleName>', '模块名称，支持相对路径方式。')
   .option('-t, --type <stype>', '模块类型，可选app或module，默认为app', 'app')
+  .option('-s, --source [source]', '自定义的模板源地址')
   .action(generate)
 program.parseAsync()
