@@ -1,6 +1,6 @@
 {
   "name": "vue-module-creator",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "A command line tool for the create micro front end module project",
   "bin": {
     "vml": "main.js"
